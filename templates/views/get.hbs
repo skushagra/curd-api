@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET Requests</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <style>
+        div#databox{
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    {{>navbar}}<br>
+    <div class="title"><center><h1>GET request made successfully</h1></center></div><br><br>
+    <div class="box" id="databox">
+        {{#each data as |value key|}}
+            <div class="card" style="width: auto;">
+                <div class="card-body">
+                    <center><h5 class="card-title" style="font-size: 32px;">{{value.title}}</h5></center>
+                    <center><p class="card-text">{{value.description}}</p></center><br>
+                    <button class="button is-primary is-small" style="float: right;">{{value.date}}</button>
+                    <button onclick="window.location.href='/get/{{value._id}}';" class="button is-primary is-small">{{value._id}}</button>
+                    <a href="/update/{{value._id}}" class="button is-warning is-small">UPDATE</a>
+                    <button onclick="window.location.href='/delete/{{value._id}}';" class="button is-danger is-small">DELETE</button>
+                </div>
+            </div><br>
+        {{/each}}
+    </div><br><br>
+    <div class="notification is-link" id="databox">
+        <p>To GET specific instance use postId after /get in the search bar. Ex: http://localhost:3000/get/{postId}</p><br>
+        <p>postId begin from 0. Currently postId range from <strong>(0 <= postId < {{data.length}})</strong></p>
+        <p>Rows returned (total entries in database) = <strong>{{data.length}}</strong></p>
+        <button onclick="window.location.href='/delete';" class="button is-danger is-small" style="float:right; margin-left:5px">DELETE ALL</button>
+        <button onclick="window.location.href='/get';" class="button is-danger is-small" style="float: right; margin-left:5px">GET All</button>
+    </div><br><br>
+    {{>footer}}
+</body>
+</html>

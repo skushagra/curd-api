@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@383&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Requests</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        html, body, h1, label, input {
+            font-family: Comfortaa;
+        }
+        input, textarea{
+            width: 80%;
+            position: relative;
+            height: 35px;
+            clear: both;
+        }
+        textarea{
+            height: 170px;
+        }
+
+        input[type=submit]{
+            background-color: rgb(49, 171, 219);
+            border: none;
+        }
+
+        input[type=submit]:hover{
+            background-color: rgb(11, 116, 214);
+            color: antiquewhite ;
+            border: none;
+        }
+        p{
+            margin-left: 20px;
+        }
+        footer{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    {{>navbar}}
+    <br>
+    <div class="title"><center><h1>Make a POST request here.</h1></center></div>
+    <form action="/posts" method="POST"><br>
+        <center><strong><label for="">Title</label></strong></center>
+        <center><input type="text" name="title" placeholder="Title" required></center><br>
+
+        <center><strong><label for="">Description</label></strong></center>
+        <center><textarea type="text" name="description" placeholder="Describe your story" required ></textarea></center><br>
+
+        <center><input type="submit" value="Submit a Post"></center><br><br>
+    </form><br>
+    {{>footer}}
+</body>
+</html>
